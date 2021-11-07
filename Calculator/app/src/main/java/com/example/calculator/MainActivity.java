@@ -199,9 +199,25 @@ public class MainActivity extends AppCompatActivity {
         resultDisplay.setText(curr);
     }
 
+    private boolean checkSelecting() {
+        String cur = inputDisplay.getText().toString();
+        if(cur.length() < 2) return false;
+        char c = cur.charAt(cur.length()-2);
+        if(c == '+') return true;
+        if(c == '-') return true;
+        if(c == '×') return true;
+        if(c == '÷') return true;
+        return false;
+    }
+
     public void buttonPlus(View view) {
         String curr = inputDisplay.getText().toString();
-        if(curr.indexOf('=') != -1) {
+        if(checkSelecting() && isShowingResult){
+            int pos = curr.length()-2;
+            curr = curr.substring(0, pos) + "+ ";
+            inputDisplay.setText(curr);
+        }
+        else if(curr.indexOf('=') != -1) {
             inputDisplay.setText(resultDisplay.getText().toString() + " + ");
         }
         else if(curr.indexOf('+') == -1) {
@@ -220,18 +236,18 @@ public class MainActivity extends AppCompatActivity {
                 resultDisplay.setText(res);
                 inputDisplay.setText(res+" + ");
             }
-            else {
-                curr = inputDisplay.getText().toString();
-                int pos = curr.length()-2;
-                curr = curr.substring(0, pos) + " + ";
-            }
         }
         isShowingResult = true;
     }
 
     public void buttonMinus(View view) {
         String curr = inputDisplay.getText().toString();
-        if(curr.indexOf('=') != -1) {
+        if(checkSelecting() && isShowingResult){
+            int pos = curr.length()-2;
+            curr = curr.substring(0, pos) + "- ";
+            inputDisplay.setText(curr);
+        }
+        else if(curr.indexOf('=') != -1) {
             inputDisplay.setText(resultDisplay.getText().toString() + " - ");
         }
         else if(curr.indexOf('-') == -1) {
@@ -250,18 +266,18 @@ public class MainActivity extends AppCompatActivity {
                 resultDisplay.setText(res);
                 inputDisplay.setText(res+" - ");
             }
-            else {
-                curr = inputDisplay.getText().toString();
-                int pos = curr.length()-2;
-                curr = curr.substring(0, pos) + " - ";
-            }
         }
         isShowingResult = true;
     }
 
     public void buttonMulti(View view) {
         String curr = inputDisplay.getText().toString();
-        if(curr.indexOf('=') != -1) {
+        if(checkSelecting() && isShowingResult){
+            int pos = curr.length()-2;
+            curr = curr.substring(0, pos) + "× ";
+            inputDisplay.setText(curr);
+        }
+        else if(curr.indexOf('=') != -1) {
             inputDisplay.setText(resultDisplay.getText().toString() + " × ");
         }
         else if(curr.indexOf('×') == -1) {
@@ -280,18 +296,18 @@ public class MainActivity extends AppCompatActivity {
                 resultDisplay.setText(res);
                 inputDisplay.setText(res+" × ");
             }
-            else {
-                curr = inputDisplay.getText().toString();
-                int pos = curr.length()-2;
-                curr = curr.substring(0, pos) + " × ";
-            }
         }
         isShowingResult = true;
     }
 
     public void buttonDivide(View view) {
         String curr = inputDisplay.getText().toString();
-        if(curr.indexOf('=') != -1) {
+        if(checkSelecting() && isShowingResult){
+            int pos = curr.length()-2;
+            curr = curr.substring(0, pos) + "÷ ";
+            inputDisplay.setText(curr);
+        }
+        else if(curr.indexOf('=') != -1) {
             inputDisplay.setText(resultDisplay.getText().toString() + " ÷ ");
         }
         else if(curr.indexOf('÷') == -1) {
@@ -310,11 +326,6 @@ public class MainActivity extends AppCompatActivity {
                 resultDisplay.setText(res);
                 inputDisplay.setText(res+" ÷ ");
             }
-            else {
-                curr = inputDisplay.getText().toString();
-                int pos = curr.length()-2;
-                curr = curr.substring(0, pos) + " ÷ ";
-            }
         }
         isShowingResult = true;
     }
@@ -331,10 +342,14 @@ public class MainActivity extends AppCompatActivity {
     public void buttonC(View view) {
         inputDisplay.setText("");
         resultDisplay.setText("0");
+        prevCalc = "";
     }
 
     public void buttonCE(View view) {
-        inputDisplay.setText("0");
+        resultDisplay.setText("0");
+        if(!checkSelecting()) {
+            inputDisplay.setText("");
+        }
     }
 
     public void buttonEqual(View view) {
@@ -342,14 +357,32 @@ public class MainActivity extends AppCompatActivity {
         String curr = inputDisplay.getText().toString();
         int equalPos = curr.indexOf('=');
         if(equalPos == -1) {
-            String s2 = resultDisplay.getText().toString();
-            String s1 = inputDisplay.getText().toString();
-            Calculate();
-            inputDisplay.setText(s1+s2+" = ");
-            int p1 = inputDisplay.getText().toString().indexOf(' ');
-            int p2 = inputDisplay.getText().toString().indexOf('=');
-            if(p1 != -1 && p2 != -1) prevCalc = inputDisplay.getText().toString().substring(p1, p2-1);
-            else prevCalc = "";
+            if(checkSelecting()) {
+                String s2 = resultDisplay.getText().toString();
+                String s1 = inputDisplay.getText().toString();
+                Calculate();
+                inputDisplay.setText(s1 + s2 + " = ");
+                int p1 = inputDisplay.getText().toString().indexOf(' ');
+                int p2 = inputDisplay.getText().toString().indexOf('=');
+                if (p1 != -1 && p2 != -1)
+                    prevCalc = inputDisplay.getText().toString().substring(p1, p2 - 1);
+                else prevCalc = "";
+            }
+            else if(!prevCalc.isEmpty()) {
+                String copy = prevCalc;
+                inputDisplay.setText(resultDisplay.getText().toString()+copy.substring(0,3));
+                resultDisplay.setText(copy.substring(3));
+                String s2 = resultDisplay.getText().toString();
+                String s1 = inputDisplay.getText().toString();
+                Calculate();
+                inputDisplay.setText(s1+s2+" = ");
+            }
+            else {
+                String s2 = resultDisplay.getText().toString();
+                String s1 = inputDisplay.getText().toString();
+                Calculate();
+                inputDisplay.setText(s1+s2+" = ");
+            }
         }
         else if(!prevCalc.isEmpty()) {
             String copy = prevCalc;
@@ -360,6 +393,7 @@ public class MainActivity extends AppCompatActivity {
             Calculate();
             inputDisplay.setText(s1+s2+" = ");
         }
+
     }
 
 
@@ -368,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
         if(curr.charAt(0) == '-') curr = curr.substring(1);
         else curr = '-'+curr;
         if(isShowingResult) {
-            inputDisplay.setText(curr);
+            inputDisplay.setText(curr + " = ");
             resultDisplay.setText(curr);
         }
         else {
