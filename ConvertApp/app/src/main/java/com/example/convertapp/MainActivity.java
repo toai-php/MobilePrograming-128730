@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private CategoryAdapter adapter2;
     private EditText value;
     private TextView result;
+    private ImageView switch_convert;
     private int radix1 = 2;
     private int radix2 = 2;
 
@@ -34,6 +38,20 @@ public class MainActivity extends AppCompatActivity {
 
         value = findViewById(R.id.insert_value);
         result = findViewById(R.id.result_view);
+        switch_convert = findViewById(R.id.switch_convert);
+        switch_convert.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getActionMasked() == 1) {
+                    int i1 = spinner1.getSelectedItemPosition();
+                    int i2 = spinner2.getSelectedItemPosition();
+                    spinner1.setSelection(i2);
+                    spinner2.setSelection(i1);
+                    return true;
+                }
+                return true;
+            }
+        });
 
         value.addTextChangedListener(new TextWatcher() {
             @Override
