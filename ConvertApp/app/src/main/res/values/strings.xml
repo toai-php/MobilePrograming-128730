@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ConvertApp</string>
+    <string name="radix_convert">RADIX CONVERT</string>
+    <string name="i_want_to_convert">I want to convert:</string>
+    <string name="to">To:</string>
+    <string name="result">1</string>
+    <string name="value">Value</string>
+</resources>
