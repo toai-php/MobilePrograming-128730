@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.calculator.CalculatorFragment">
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -32,11 +32,10 @@
 
             <Button
                 android:id="@+id/buttonCE"
-                android:onClick="buttonCE"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_circle2"
                 android:textSize="20sp"
@@ -45,11 +44,10 @@
 
             <Button
                 android:id="@+id/buttonC"
-                android:onClick="buttonC"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_circle2"
                 android:textColor="@color/white"
@@ -58,7 +56,6 @@
 
             <ImageButton
                 android:id="@+id/buttonBack"
-                android:onClick="buttonBack"
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
@@ -113,7 +110,6 @@
 
             <Button
                 android:id="@+id/buttonDivide"
-                android:onClick="buttonDivide"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="4dp"
@@ -132,11 +128,10 @@
 
             <Button
                 android:id="@+id/buttonNum7"
-                android:onClick="buttonNum7"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_circle"
                 android:textSize="20sp"
@@ -145,11 +140,10 @@
 
             <Button
                 android:id="@+id/buttonNum8"
-                android:onClick="buttonNum8"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -158,11 +152,10 @@
 
             <Button
                 android:id="@+id/buttonNum9"
-                android:onClick="buttonNum9"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_circle"
                 android:textColor="@color/white"
@@ -171,7 +164,6 @@
 
             <Button
                 android:id="@+id/buttonMultiple"
-                android:onClick="buttonMulti"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
@@ -191,11 +183,10 @@
             <Button
                 android:background="@drawable/btn_circle"
                 android:id="@+id/buttonNum4"
-                android:onClick="buttonNum4"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
                 android:textSize="20sp"
                 android:textColor="@color/white"
@@ -203,12 +194,11 @@
 
             <Button
                 android:id="@+id/buttonNum5"
-                android:onClick="buttonNum5"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -216,20 +206,18 @@
 
             <Button
                 android:id="@+id/buttonNum6"
-                android:onClick="buttonNum6"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle"
                 android:layout_height="80dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:text="6" />
 
             <Button
-                android:id="@+id/buttonPlus"
-                android:onClick="buttonMinus"
+                android:id="@+id/buttonMinus"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle2"
                 android:layout_height="80dp"
@@ -248,7 +236,6 @@
 
             <Button
                 android:id="@+id/buttonNum1"
-                android:onClick="buttonNum1"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle"
                 android:layout_height="80dp"
@@ -261,7 +248,6 @@
 
             <Button
                 android:id="@+id/buttonNum2"
-                android:onClick="buttonNum2"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle"
                 android:layout_height="80dp"
@@ -274,7 +260,6 @@
 
             <Button
                 android:id="@+id/buttonNum3"
-                android:onClick="buttonNum3"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle"
                 android:layout_height="80dp"
@@ -286,8 +271,7 @@
                 android:text="3" />
 
             <Button
-                android:id="@+id/buttonMinus"
-                android:onClick="buttonPlus"
+                android:id="@+id/buttonPlus"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle2"
                 android:layout_height="80dp"
@@ -306,7 +290,6 @@
 
             <Button
                 android:id="@+id/buttonNegate"
-                android:onClick="buttonNegate"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle2"
                 android:layout_height="80dp"
@@ -319,7 +302,6 @@
 
             <Button
                 android:id="@+id/buttonZero"
-                android:onClick="buttonZero"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle"
                 android:layout_height="80dp"
@@ -344,7 +326,6 @@
 
             <Button
                 android:id="@+id/buttonEqual"
-                android:onClick="buttonEqual"
                 android:layout_width="0dp"
                 android:background="@drawable/btn_circle3"
                 android:layout_height="80dp"
@@ -362,7 +343,7 @@
         android:id="@+id/result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="50dp"
         android:lines="1"
         android:text="0"
@@ -377,7 +358,7 @@
         android:id="@+id/input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:textAlignment="textEnd"
         android:textColor="#FF8A8A8A"
         android:textSize="30sp"
